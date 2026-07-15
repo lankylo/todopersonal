@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f4f1">
+  <meta name="description" content="A private shared household task list.">
+  <title>Our List</title>
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <noscript>This app requires JavaScript.</noscript>
+
+  <main class="shell">
+    <section id="configuration-screen" class="panel hidden">
+      <h1>Connect Supabase</h1>
+      <p>
+        Add your Supabase Project URL and publishable key to
+        <code>config.js</code>, then reload the page.
+      </p>
+    </section>
+
+    <section id="loading-screen" class="panel">
+      <p>Opening your list…</p>
+    </section>
+
+    <section id="setup-screen" class="panel hidden">
+      <header class="section-header">
+        <div>
+          <h1>Set up your shared list</h1>
+          <p class="muted">Create the household once. The other phone joins with the code.</p>
+        </div>
+      </header>
+
+      <div class="setup-grid">
+        <form id="create-household-form" class="setup-card stack">
+          <h2>Create a household</h2>
+          <label>
+            Your name
+            <input id="creator-name" maxlength="40" required placeholder="Lorenzo">
+          </label>
+          <label>
+            Household name
+            <input id="household-name" maxlength="60" value="Our household" required>
+          </label>
+          <button type="submit">Create shared list</button>
+        </form>
+
+        <form id="join-household-form" class="setup-card stack">
+          <h2>Join a household</h2>
+          <label>
+            Your name
+            <input id="joiner-name" maxlength="40" required placeholder="Your name">
+          </label>
+          <label>
+            Invite code
+            <input id="join-code" maxlength="12" required
+                   autocapitalize="characters" placeholder="AB12CD34">
+          </label>
+          <button type="submit">Join shared list</button>
+        </form>
+      </div>
+
+      <p id="setup-message" class="message" aria-live="polite"></p>
+    </section>
+
+    <section id="app-screen" class="hidden">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow" id="household-label">Our household</p>
+          <h1>Our List</h1>
+        </div>
+
+        <div class="header-actions">
+          <button id="install-button" class="secondary hidden" type="button">Install</button>
+          <button id="household-button" class="secondary" type="button">Household</button>
+        </div>
+      </header>
+
+      <form id="new-task-form" class="quick-add">
+        <input id="new-task-title" maxlength="180" required
+               autocomplete="off" placeholder="Add something to remember…"
+               aria-label="New task">
+        <button type="submit">Add</button>
+      </form>
+
+      <nav id="status-tabs" class="tabs" aria-label="Task status">
+        <button type="button" data-status="inbox" class="active">
+          Inbox <span data-count="inbox">0</span>
+        </button>
+        <button type="button" data-status="next">
+          Next <span data-count="next">0</span>
+        </button>
+        <button type="button" data-status="waiting">
+          Waiting <span data-count="waiting">0</span>
+        </button>
+        <button type="button" data-status="done">
+          Done <span data-count="done">0</span>
+        </button>
+      </nav>
+
+      <p id="app-message" class="message" aria-live="polite"></p>
+      <section id="task-list" class="task-list" aria-live="polite"></section>
+      <p id="empty-state" class="empty-state hidden">Nothing here.</p>
+    </section>
+  </main>
+
+  <dialog id="household-dialog">
+    <form method="dialog" class="dialog-card">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Household</p>
+          <h2 id="dialog-household-name">Our household</h2>
+        </div>
+        <button class="button-link" value="cancel">Close</button>
+      </div>
+
+      <p>Invite code</p>
+      <div class="code-row">
+        <strong id="dialog-join-code" class="invite-code">—</strong>
+        <button id="copy-code-button" type="button" class="secondary">Copy</button>
+      </div>
+
+      <h3>People</h3>
+      <ul id="member-list" class="member-list"></ul>
+    </form>
+  </dialog>
+
+  <template id="task-template">
+    <article class="task-card">
+      <div class="task-main">
+        <button class="complete-button" type="button" aria-label="Mark task done">○</button>
+        <input class="task-title" maxlength="180" aria-label="Task title">
+        <button class="delete-button button-link danger" type="button">Delete</button>
+      </div>
+
+      <div class="task-fields">
+        <label>
+          Owner
+          <select class="task-owner"></select>
+        </label>
+        <label>
+          Status
+          <select class="task-status">
+            <option value="inbox">Inbox</option>
+            <option value="next">Next</option>
+            <option value="waiting">Waiting</option>
+            <option value="done">Done</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="notes-label">
+        Notes
+        <textarea class="task-notes" rows="2"
+                  placeholder="Current thinking, what happened, or what is needed next…"></textarea>
+      </label>
+      <p class="save-state" aria-live="polite"></p>
+    </article>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
