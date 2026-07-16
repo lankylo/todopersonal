@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f4f4f1">
-  <meta name="description" content="A private shared household task list.">
-  <title>Our List</title>
+  <meta name="description" content="A private shared list for stopping re-remembering.">
+  <title>Adulting</title>
 
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon-192.png">
@@ -32,26 +32,26 @@
       <header class="section-header">
         <div>
           <h1>Set up your shared list</h1>
-          <p class="muted">Create the household once. The other phone joins with the code.</p>
+          <p class="muted">Create the list once. The other phone joins with the code.</p>
         </div>
       </header>
 
       <div class="setup-grid">
         <form id="create-household-form" class="setup-card stack">
-          <h2>Create a household</h2>
+          <h2>Create a list</h2>
           <label>
             Your name
             <input id="creator-name" maxlength="40" required placeholder="Lorenzo">
           </label>
           <label>
-            Household name
-            <input id="household-name" maxlength="60" value="Our household" required>
+            List name
+            <input id="household-name" maxlength="60" value="Adulting" required>
           </label>
           <button type="submit">Create shared list</button>
         </form>
 
         <form id="join-household-form" class="setup-card stack">
-          <h2>Join a household</h2>
+          <h2>Join a list</h2>
           <label>
             Your name
             <input id="joiner-name" maxlength="40" required placeholder="Your name">
@@ -71,13 +71,13 @@
     <section id="app-screen" class="hidden">
       <header class="app-header">
         <div>
-          <p class="eyebrow" id="household-label">Our household</p>
-          <h1>Our List</h1>
+          <p class="eyebrow" id="household-label">Stop Re-Remembering</p>
+          <h1>Adulting</h1>
         </div>
 
         <div class="header-actions">
           <button id="install-button" class="secondary hidden" type="button">Install</button>
-          <button id="household-button" class="secondary" type="button">Household</button>
+          <button id="household-button" class="secondary" type="button">List</button>
         </div>
       </header>
 
@@ -113,8 +113,8 @@
     <form method="dialog" class="dialog-card">
       <div class="section-header">
         <div>
-          <p class="eyebrow">Household</p>
-          <h2 id="dialog-household-name">Our household</h2>
+          <p class="eyebrow">List</p>
+          <h2 id="dialog-household-name">Adulting</h2>
         </div>
         <button class="button-link" value="cancel">Close</button>
       </div>
