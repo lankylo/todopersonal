@@ -1,7 +1,7 @@
 {
-  "name": "Our List",
-  "short_name": "Our List",
-  "description": "A private shared household task list.",
+  "name": "Adulting",
+  "short_name": "Adulting",
+  "description": "A private shared list for stopping re-remembering.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

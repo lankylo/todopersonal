@@ -270,8 +270,8 @@ async function handleSession(session) {
   }
 
   function renderHousehold() {
-    el.householdLabel.textContent = state.household.name;
-    el.dialogHouseholdName.textContent = state.household.name;
+    el.householdLabel.textContent = "Stop Re-Remembering";
+    el.dialogHouseholdName.textContent = "Adulting";
     el.dialogJoinCode.textContent = state.household.join_code;
 
     el.memberList.replaceChildren();
@@ -322,6 +322,7 @@ async function handleSession(session) {
     const statusSelect = fragment.querySelector(".task-status");
     const notesInput = fragment.querySelector(".task-notes");
     const deleteButton = fragment.querySelector(".delete-button");
+    const expandButton = fragment.querySelector(".expand-button");
     const saveState = fragment.querySelector(".save-state");
 
     card.dataset.id = task.id;
@@ -368,6 +369,12 @@ async function handleSession(session) {
     completeButton.addEventListener("click", () => {
       const status = task.status === "done" ? "inbox" : "done";
       updateTask(task.id, { status }, saveState);
+    });
+
+    expandButton.addEventListener("click", () => {
+      const isCollapsed = card.classList.toggle("is-collapsed");
+      expandButton.setAttribute("aria-expanded", String(!isCollapsed));
+      expandButton.textContent = isCollapsed ? "Details" : "Hide";
     });
 
     deleteButton.addEventListener("click", async () => {

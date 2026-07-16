@@ -64,8 +64,15 @@ h1 {
 }
 
 .muted,
-.eyebrow {
+.eyebrow,
+.tagline {
   color: var(--muted);
+}
+
+.tagline {
+  margin: 0 0 2px;
+  font-size: 0.92rem;
+  font-weight: 650;
 }
 
 .eyebrow {
@@ -217,7 +224,35 @@ button.danger {
 
 .task-list {
   display: grid;
-  gap: 10px;
+  gap: 8px;
+}
+
+
+.task-card.is-collapsed {
+  padding-bottom: 10px;
+}
+
+.task-details {
+  margin-top: 10px;
+}
+
+.task-card.is-collapsed .task-details {
+  display: none;
+}
+
+.expand-button {
+  min-height: 34px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+}
+
+.task-card.is-collapsed .delete-button {
+  display: none;
+}
+
+.task-card.is-collapsed .task-title {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .task-card {
@@ -228,7 +263,7 @@ button.danger {
 }
 
 .task-main {
-  align-items: flex-start;
+  align-items: center;
 }
 
 .complete-button {
@@ -347,5 +382,20 @@ dialog::backdrop {
 
   .delete-button {
     font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .task-main {
+    gap: 6px;
+  }
+
+  .task-title {
+    font-size: 0.95rem;
+  }
+
+  .expand-button {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }

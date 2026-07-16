@@ -71,7 +71,7 @@
     <section id="app-screen" class="hidden">
       <header class="app-header">
         <div>
-          <p class="eyebrow" id="household-label">Stop Re-Remembering</p>
+          <p class="tagline" id="household-label">Stop Re-Remembering</p>
           <h1>Adulting</h1>
         </div>
 
@@ -129,37 +129,39 @@
       <ul id="member-list" class="member-list"></ul>
     </form>
   </dialog>
-
   <template id="task-template">
-    <article class="task-card">
+    <article class="task-card is-collapsed">
       <div class="task-main">
         <button class="complete-button" type="button" aria-label="Mark task done">○</button>
         <input class="task-title" maxlength="180" aria-label="Task title">
+        <button class="expand-button secondary" type="button" aria-expanded="false">Details</button>
         <button class="delete-button button-link danger" type="button">Delete</button>
       </div>
 
-      <div class="task-fields">
-        <label>
-          Owner
-          <select class="task-owner"></select>
-        </label>
-        <label>
-          Status
-          <select class="task-status">
-            <option value="inbox">Inbox</option>
-            <option value="next">Next</option>
-            <option value="waiting">Waiting</option>
-            <option value="done">Done</option>
-          </select>
-        </label>
-      </div>
+      <div class="task-details">
+        <div class="task-fields">
+          <label>
+            Owner
+            <select class="task-owner"></select>
+          </label>
+          <label>
+            Status
+            <select class="task-status">
+              <option value="inbox">Inbox</option>
+              <option value="next">Next</option>
+              <option value="waiting">Waiting</option>
+              <option value="done">Done</option>
+            </select>
+          </label>
+        </div>
 
-      <label class="notes-label">
-        Notes
-        <textarea class="task-notes" rows="2"
-                  placeholder="Current thinking, what happened, or what is needed next…"></textarea>
-      </label>
-      <p class="save-state" aria-live="polite"></p>
+        <label class="notes-label">
+          Notes
+          <textarea class="task-notes" rows="2"
+                    placeholder="Current thinking, what happened, or what is needed next…"></textarea>
+        </label>
+        <p class="save-state" aria-live="polite"></p>
+      </div>
     </article>
   </template>
 
