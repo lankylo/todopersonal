@@ -1,12 +1,12 @@
-# Our List
+# Adulting
 
-A small shared household to-do web app built with plain HTML, CSS, JavaScript
+A small shared to-do web app built with plain HTML, CSS, JavaScript
 and Supabase.
 
 ## What version one does
 
 - Email sign-in
-- Create one household
+- Create one shared list
 - Join it with a private invite code
 - Add tasks
 - Edit title and notes
@@ -85,7 +85,7 @@ URLs.
 ## 6. Start using it
 
 1. Person one signs in and chooses **Create a household**.
-2. Open **Household** and copy the invite code.
+2. Open **List** and copy the invite code.
 3. Person two signs in using a different email.
 4. Person two chooses **Join a household** and enters the code.
 5. Both people can now see and update the same list.
